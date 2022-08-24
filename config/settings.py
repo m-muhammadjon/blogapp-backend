@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'rest_framework',
     'drf_yasg',
+    'corsheaders'
 
 ]
 
@@ -45,6 +46,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -65,6 +67,9 @@ TEMPLATES = [
         },
     },
 ]
+
+ALLOWED_HOSTS=['*']
+CORS_ORIGIN_ALLOW_ALL = True
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
