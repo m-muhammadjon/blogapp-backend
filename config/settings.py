@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'rest_framework',
     'drf_yasg',
-    'corsheaders'
+    'corsheaders',
+    'blogpost.apps.BlogpostConfig',
 
 ]
 
@@ -68,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-ALLOWED_HOSTS=['*']
+ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
 
 WSGI_APPLICATION = 'config.wsgi.application'

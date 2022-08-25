@@ -43,7 +43,7 @@ def user_login(request):
     return Response(res)
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 @permission_classes([AllowAny])
 def get_user(request):
     try:
