@@ -1,5 +1,7 @@
 import datetime
+import os
 from pathlib import Path
+from os.path import join
 
 import django
 from django.utils.encoding import smart_str
@@ -117,6 +119,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIR = [
+    join(BASE_DIR, 'static')
+]
+STATIC_ROOT = join(BASE_DIR, 'assets')
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -131,6 +140,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
+    'DEFAULT_PAGINATION_CLASS': 'blogpost.paginators.PageNumberWithLimitPagination',
+    'PAGE_SIZE': 10,
 }
 JWT_AUTH = {
     'JWT_ENCODE_HANDLER':
