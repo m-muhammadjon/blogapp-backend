@@ -4,6 +4,7 @@
 *.pyc
 __pycache__
 files/
+media/
 # Backup files #
 *.bak
 
