@@ -7,6 +7,8 @@ app_name = 'blogpost'
 urlpatterns = [
     path('posts/', views.PostList.as_view(), name='post_list'),
     path('posts/<int:id>', views.PostDetail.as_view(), name='post_detail'),
+    path('post-like/', views.post_like, name='post_like'),
     path('comments/', views.CommentList.as_view(), name='comment_list'),
     path('comments/<int:id>', views.CommentDetail.as_view(), name='comment_detail'),
+
 ]
