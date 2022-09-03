@@ -14,7 +14,6 @@ class CommentShortSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    comments = serializers.SerializerMethodField()
     author = serializers.ReadOnlyField(source='author.username')
     likes = serializers.SerializerMethodField()
     is_liked = serializers.SerializerMethodField()
@@ -22,9 +21,6 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ('id', 'author', 'title', 'body', 'image', 'created_at', 'updated_at', 'comments', 'likes', 'is_liked')
-
-    def get_comments(self, obj):
-        return CommentShortSerializer(obj.comments, many=True).data
 
     def get_likes(self, obj):
         return obj.get_total_likes()

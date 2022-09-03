@@ -1,14 +1,12 @@
-from django.shortcuts import render
-
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, permissions, status
-from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
-
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
 from blogpost import models, serializers
-from blogpost.utils import create_or_delete_action
 from blogpost.permissions import IsOwnerOrReadOnly
+from blogpost.utils import create_or_delete_action
 
 
 class PostList(generics.ListCreateAPIView):
@@ -32,6 +30,8 @@ class CommentList(generics.ListCreateAPIView):
     queryset = models.Comment.objects.all()
     serializer_class = serializers.CommentSerializer
     permission_classes = [permissions.IsAuthenticated, ]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['post', ]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user, is_active=True)

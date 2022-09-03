@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'corsheaders',
     'blogpost.apps.BlogpostConfig',
-
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -140,6 +140,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_PAGINATION_CLASS': 'blogpost.paginators.PageNumberWithLimitPagination',
     'PAGE_SIZE': 10,
 }
